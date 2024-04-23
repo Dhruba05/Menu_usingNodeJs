@@ -1,5 +1,9 @@
 const mongoose=require('mongoose')
-const mongoURL='mongodb://localhost:27017/restaurant';
+require('dotenv').config();
+//onst mongoURL='mongodb://localhost:27017/restaurant'; //local URL
+//const mongoURL = 'mongodb+srv://gdhruba636:Dhruba636@cluster0.4evzexl.mongodb.net/'
+const mongoURL=process.env.DB_URL;
+
 const connectDB = async()=>{
     try {
         await mongoose.connect(mongoURL);

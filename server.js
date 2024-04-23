@@ -5,6 +5,7 @@ const os = require('os')
 const bodyParser = require('body-parser');
 app.use(bodyParser.json())
 const connectDB = require('./db');
+require('dotenv').config();
 
 
 app.get('/', (req, res) => {
@@ -17,8 +18,9 @@ const menuRoutes=require('./routes/menuRoutes');
 //use the routers
 app.use('/menu' , menuRoutes)
 
+const PORT=process.env.PORT || 3000
 connectDB().then(() => {
-    app.listen(3000, () => {
+    app.listen(PORT, () => {
         console.log("Listening to Port 3000");
     })
 })
